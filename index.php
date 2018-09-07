@@ -30,7 +30,6 @@
 	  		<option value="" selected>Chọn một trang web</option>
 	  		<option value="https://www.yellowpages.vnn.vn" <?php if($url=="https://www.yellowpages.vnn.vn") echo "selected"; ?> >https://www.yellowpages.vnn.vn</option>
 	  		<option value="http://trangvangvietnam.com/" <?php if($url=="http://trangvangvietnam.com/") echo "selected"; ?> >http://trangvangvietnam.com/</option>
-	  		<option value="http://trangvangtructuyen.vn/" <?php if($url=="http://trangvangtructuyen.vn/") echo "selected"; ?> >http://trangvangtructuyen.vn/</option>
 		</select>
 	</nav>
 	<div class="container mt-2">
@@ -62,7 +61,7 @@
 		  				$url_dom = $_POST['linkDOM'];
 		  			}
 		  			include("libWebDom/processDOM.php");
-		  			if(!getData($url_dom)){
+		  			if(!getData($url_dom, $url)){
 		  		?> 
 				<div class="alert alert-danger m-2 alert-dismissible fade show" role="alert">
 				  	Không có dữ liệu hoặc liên kết sai

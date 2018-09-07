@@ -1,3 +1,3 @@
 <?php
-	$home_url = "http://localhost/DOM"
+	$home_url = "http://localhost/htmldom"
 ?>

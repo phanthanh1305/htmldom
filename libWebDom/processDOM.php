@@ -36,7 +36,7 @@
 		foreach ($list_post as $item) {
 			$html1 = new simple_html_dom();
 			$html1->load($item);
-			$tieude = $html1->find('.company_name',0);
+			$tieude = $html1->find('div.company_name',0);
 			$diachi = $html1->find('.diachisection',1);
 			$sdt = $html1->find('.thoaisection',0);
 			$stt++;
@@ -57,6 +57,21 @@
 		$html->load_file($url);
 		$baongoai = $html->find('#noidungchinh', 0);
 		$html->load($baongoai->children(1)->outertext);
+		$baongoai = $html->find('div div');
+		// echo $baongoai->outertext; return;
+		// echo $html->save();
+		// return;
+		$i = 0;
+		foreach($baongoai as $item){
+			if($i > 0){
+				echo $item->outertext;
+				// $html->load($item->outertext);
+				// $code = $html->children(1)->outertext;
+				// echo $code->save();
+			}
+			$i++;
+		}
+		return;
 		$list_post = $html->find('div');
 		$stt = 0;
 		foreach ($list_post as $item) {
@@ -70,16 +85,18 @@
 		}
 		return true;
 	}
-	function getData($url){
+	function getData($url, $nguon){
 		if($url == null || $url == ""){
 			return false;
 		}
-		if(strpos($url, 'yellowpages.vnn.vn'))
+		if(strpos($url, 'yellowpages.vnn.vn') && strpos($nguon, 'yellowpages.vnn.vn')){
 			getData_1($url);
-		else if(strpos($url, 'trangvangvietnam.com'))
+			return true;
+		}
+		else if(strpos($url, 'trangvangvietnam.com') && strpos($url, 'trangvangvietnam.com')){
 			getData_2($url);
-		else if(strpos($url, 'niengiamtrangvang.com'))
-			getData_3($url);
-		return true;
+			return true;
+		}
+		return false;
 	}
 ?>
